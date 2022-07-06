@@ -3,24 +3,24 @@ import { Link } from "@remix-run/react";
 
 const Main = memo(() => {
   const testFetch = [
-    {title: "pokemon"},
-    {title: "character"}
+    {title: "Pokemon", image: "https://i.imgur.com/s1YRcpu.png", url: "pokemon"},
+    {title: "Rick n Morty", image: "https://i.imgur.com/kkE25w2.jpeg", url: "ricknmorty"}
   ]
 
   return (
-    <main className="mx-auto max-w-4xl">
-      <ul className='mx-auto text-center'>
+    <main className="mx-auto max-w-4xl flex items-center justify-center min-h-screen w-full">
+      <div className='mx-auto text-center flex justify-around w-full'>
         {testFetch.map((test: any) => (
-          <li key={test.title}>
+          <div key={test.title} className="hover:scale-110 transition duration-200 ease-in-out">
             <Link
-              to={test.title}
-              className="text-blue-600 underline"
+              to={test.url}
             >
-              {test.title}
+              <img src={test.image} alt={test.title} className="w-96 h-96" />
+              <p className="text-zinc-500 text-2xl">{test.title}</p>
             </Link>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </main>
   );
 })

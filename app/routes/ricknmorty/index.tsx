@@ -9,7 +9,7 @@ export const loader = async () => {
   });
 };
 
-const Characters = memo(() => {
+const RicknMorty = memo(() => {
   const { characters } = useLoaderData()
 
   return (
@@ -34,4 +34,4 @@ const Characters = memo(() => {
   );
 })
 
-export default Characters
+export default RicknMorty
