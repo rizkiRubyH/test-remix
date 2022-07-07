@@ -11,10 +11,6 @@ export interface LayoutProps {
   }
 }
 
-export const action: ActionFunction = async ({ request }) => {
-  return logout(request);
-};
-
 export const Layout: FC<LayoutProps> = (props) => {
   const { children, userLogin } = props
 
@@ -25,9 +21,9 @@ export const Layout: FC<LayoutProps> = (props) => {
           <p className="">Home</p>
         </Link>
         {userLogin.userName ? (
-          <Form method="post">
-            <button type="submit" className="button">Logout</button>
-          </Form>
+          <Link to="/logout">
+            <p className="">Logout</p>
+          </Link>
         ) : (
           <Link to="/login">
             <p className="">Login</p>

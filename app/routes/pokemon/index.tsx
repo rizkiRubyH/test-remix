@@ -2,17 +2,13 @@ import { memo } from "react";
 import { json, redirect } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { getPokemons } from "../api"
-import { getUser, logout } from "~/sessions";
+import { getUser } from "~/sessions";
 
 // components
 import { Layout } from "~/components/layout";
 
 // types
-import type { LoaderFunction, ActionFunction } from "@remix-run/server-runtime";
-
-export const action: ActionFunction = async ({ request }) => {
-  return logout(request);
-};
+import type { LoaderFunction } from "@remix-run/server-runtime";
 
 export const loader : LoaderFunction = async ({request}) => {
   const session = await getUser(request);

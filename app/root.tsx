@@ -1,4 +1,3 @@
-import type { MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -6,7 +5,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useTransition
 } from "@remix-run/react";
+import type { MetaFunction } from "@remix-run/node";
+
+// components
+import Loader from "./components/layout/loader";
 
 // tailwind css
 import styles from "./styles/tailwind.css"
@@ -22,6 +26,8 @@ export const meta: MetaFunction = () => ({
 });
 
 export default function App() {
+  const transition = useTransition()
+
   return (
     <html lang="en">
       <head>
@@ -29,6 +35,7 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <Loader show={transition.state === "loading"} />
         <Outlet />
         <ScrollRestoration />
         <Scripts />
